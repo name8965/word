@@ -1,13 +1,28 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
+import Addkey from "./components/Addkey";
+import AddWord from "./view/AddWord";
 import Word from "./components/Word";
+import NotFound from "./view/NotFound";
 
 function App() {
   return (
     <div className="App">
       <Container>
-        <h2>MY DICTIONARY</h2>
-        <Word />
+        <Switch>
+          <Route path="/" exact>
+            <h2>MY DICTIONARY</h2>
+            <Word />
+            <Addkey />
+          </Route>
+          <Route path="/addword" exact>
+            <AddWord />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
       </Container>
     </div>
   );
