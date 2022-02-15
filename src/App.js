@@ -7,17 +7,26 @@ import Word from "./components/Word";
 import NotFound from "./view/NotFound";
 
 function App() {
+  const [list, setList] = React.useState([
+    { word: "1234", desc: "qwer", use: "asdf" },
+    { word: "12345", desc: "qwer2", use: "asdf2" },
+    { word: "123456", desc: "qwer3", use: "asdf3" },
+  ]);
+
   return (
     <div className="App">
       <Container>
         <Switch>
           <Route path="/" exact>
             <h2>MY DICTIONARY</h2>
-            <Word />
+            <Scroll>
+              <Word list={list} />
+            </Scroll>
             <Addkey />
           </Route>
           <Route path="/addword" exact>
-            <AddWord />
+            <h2>단어추가하기</h2>
+            <AddWord list={list} />
           </Route>
           <Route>
             <NotFound />
@@ -33,10 +42,18 @@ const Container = styled.div`
   width: 50vw;
   max-width: 350px;
   margin: auto;
-  height: 95vh;
+  height: 96vh;
   padding: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
+`;
+const Scroll = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 80vh;
 `;
 
 export default App;
