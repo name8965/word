@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { createWord } from "../redux/modules/word";
+import { addWordFB, createWord } from "../redux/modules/word";
 
 const AddWord = (props) => {
   const word = React.useRef(null);
@@ -15,8 +15,9 @@ const AddWord = (props) => {
       desc: desc.current.value,
       use: use.current.value,
     };
-    dispatch(createWord(words));
-    console.dir(words);
+    // dispatch(createWord(words));
+    // console.log(words);
+    dispatch(addWordFB(words));
     history.goBack();
   };
   return (

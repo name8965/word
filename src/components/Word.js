@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { removeWord } from "../redux/modules/word";
+import { deleteWordFB, removeWord } from "../redux/modules/word";
 
 const Word = (props) => {
   // const [count, setCount] = React.useState(3);
@@ -23,7 +23,9 @@ const Word = (props) => {
             <div>
               <button
                 onClick={() => {
-                  dispatch(removeWord(idx));
+                  // dispatch(removeWord(idx));
+                  console.log(idx);
+                  dispatch(deleteWordFB(word_list[idx].id));
                 }}
               >
                 삭제

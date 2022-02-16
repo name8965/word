@@ -1,6 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
-
 import word from "./modules/word";
 
 const middlewars = [thunk];

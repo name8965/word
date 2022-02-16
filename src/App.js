@@ -5,6 +5,17 @@ import Addkey from "./components/Addkey";
 import AddWord from "./view/AddWord";
 import Word from "./components/Word";
 import NotFound from "./view/NotFound";
+import { useDispatch } from "react-redux";
+import { db } from "./firebase";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  updateDoc,
+} from "firebase/firestore";
+import { loadWordFB } from "./redux/modules/word";
 
 function App() {
   const [list, setList] = React.useState([
@@ -12,6 +23,10 @@ function App() {
     { word: "12345", desc: "qwer2", use: "asdf2" },
     { word: "123456", desc: "qwer3", use: "asdf3" },
   ]);
+  const dispatch = useDispatch();
+  React.useEffect(async () => {
+    dispatch(loadWordFB());
+  });
 
   return (
     <div className="App">
