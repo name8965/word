@@ -19,7 +19,7 @@ const Word = (props) => {
             <div>설명</div>
             <span>{num.desc}</span>
             <div>예시</div>
-            <span>{num.use}</span>
+            <span style={{ color: "blue" }}>{num.use}</span>
             <div>
               <button
                 onClick={() => {

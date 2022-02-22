@@ -48,6 +48,7 @@ export default function reducer(state = initialState, action = {}) {
 
     case "word/CREATE": {
       const new_word_list = [...state.list, action.word];
+      // state.list.push(action.word);
       console.log(new_word_list);
       return { list: new_word_list };
     }
@@ -114,7 +115,7 @@ export const loadWordFB = () => {
 export const addWordFB = (word) => {
   return async function (dispatch) {
     const docRef = await addDoc(collection(db, "word"), word);
-    const word_data = { id: docRef.id, ...word };
+    const word_data = { id: docRef.id, ...word }; // ...word  = { id:"aksdjflasdjkf", word: "1234", desc: "qwer", use: "asdf" },
     console.log(word_data);
     dispatch(createWord(word_data));
   };
